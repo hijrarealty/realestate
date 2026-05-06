@@ -1,0 +1,442 @@
+/* ===============================
+   HERO SECTION - MODERN DESIGN
+   =============================== */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 72px;
+  overflow-x: hidden;
+}
+
+/* Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  text-align: center;
+  color: #ffffff;
+  animation: heroFadeUp 0.8s ease-out both;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C8A96B;
+  animation: blink 1.4s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Title */
+.hero-title {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  color: #C8A96B;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #C8A96B, transparent);
+  border-radius: 3px;
+}
+
+/* Subtitle */
+.hero-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 640px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+/* ===============================
+   SEARCH CONTAINER
+   =============================== */
+
+.search-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.search-box {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.search-box:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Input Groups */
+.input-group {
+  position: relative;
+  flex: 1;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.input-icon img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Select Styles */
+.search-box select {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px 0 48px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+}
+
+/* Custom dropdown arrow */
+.search-box select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='%236c757d'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+/* Select Hover */
+.search-box select:hover {
+  background: #ffffff;
+  border-color: #C8A96B;
+  transform: translateY(-1px);
+}
+
+/* Select Focus */
+.search-box select:focus {
+  outline: none;
+  border-color: #C8A96B;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(200, 169, 107, 0.1);
+}
+
+/* Select Active/Selected */
+.search-box select:active {
+  transform: translateY(0);
+}
+
+/* Option Styles */
+.search-box select option {
+  background: #ffffff;
+  color: #2c3e50;
+  padding: 12px;
+}
+
+.search-box select option:hover {
+  background: #C8A96B;
+  color: #ffffff;
+}
+
+/* Placeholder styling */
+.search-box select option[value=""] {
+  color: #6c757d;
+}
+
+/* Search Button */
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 28px;
+  height: 56px;
+  background: linear-gradient(135deg, #1F3D2B 0%, #2a5238 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.search-button:hover::before {
+  left: 100%;
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, #2a5238 0%, #1F3D2B 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31, 61, 43, 0.3);
+}
+
+.search-button:active {
+  transform: translateY(0);
+}
+
+.search-button svg {
+  transition: transform 0.3s ease;
+}
+
+.search-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* Input group hover effect */
+.input-group:hover .input-icon img {
+  opacity: 1;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+/* Tablet */
+@media (max-width: 968px) {
+  .hero {
+    padding-top: 80px;
+    min-height: 90vh;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+  }
+
+  .search-button {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 72px;
+    min-height: 85vh;
+  }
+
+  .hero-content {
+    padding: 0 16px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    white-space: normal;
+    display: inline;
+  }
+
+  .highlight::after {
+    bottom: -2px;
+    height: 2px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+    padding: 0 8px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .search-box select {
+    height: 50px;
+    font-size: 14px;
+    padding-left: 44px;
+  }
+
+  .input-icon {
+    left: 14px;
+  }
+
+  .input-icon img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .search-button {
+    height: 50px;
+    font-size: 14px;
+    padding: 0 20px;
+    grid-column: span 1;
+  }
+
+  .search-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
+  .search-box select {
+    font-size: 13px;
+    height: 46px;
+  }
+
+  .search-button {
+    height: 46px;
+    font-size: 13px;
+  }
+}
+
+/* Animation for search box on load */
+.search-box {
+  animation: slideUpFade 0.6s ease-out 0.3s both;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

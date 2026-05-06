@@ -1,0 +1,346 @@
+/* ===============================
+DREAM HOME CTA - BRAND COLORS
+=============================== */
+
+.dream-cta {
+  padding: 100px 24px;
+  background: #053718;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorative elements */
+.dream-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200, 169, 107, 0.08), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.dream-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(200, 169, 107, 0.06), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.dream-cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 64px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  position: relative;
+  z-index: 2;
+  
+  /* Premium gradient background */
+  background: linear-gradient(135deg, #C8A96B 0%, #A8742A 50%, #8B5E3C 100%);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Decorative gold border effect */
+.dream-cta-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5), #ffffff);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* Decorative pattern */
+.dream-cta-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+/* ===============================
+LEFT CONTENT
+=============================== */
+
+.cta-icon-wrapper {
+  display: inline-flex;
+  margin-bottom: 24px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.cta-icon-wrapper svg {
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.dream-cta-content {
+  flex: 1;
+}
+
+.dream-cta-content:hover .cta-icon-wrapper svg {
+  transform: scale(1.05);
+}
+
+.dream-cta-content h2 {
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.dream-cta-content h2 span {
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.dream-cta-content p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 560px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ===============================
+RIGHT ACTION - BUTTON
+=============================== */
+
+.dream-cta-action {
+  flex-shrink: 0;
+}
+
+.dream-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #053718;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 60px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button shine effect */
+.dream-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.dream-cta-btn:hover::before {
+  left: 100%;
+}
+
+.dream-cta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+/* Button hover effects */
+.dream-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  background: #0a4a2a;
+}
+
+.dream-cta-btn:hover svg {
+  transform: translateX(6px);
+}
+
+.dream-cta-btn:active {
+  transform: translateY(-1px);
+}
+
+/* ===============================
+RESPONSIVE DESIGN
+=============================== */
+
+/* Tablet */
+@media (max-width: 968px) {
+  .dream-cta {
+    padding: 80px 20px;
+  }
+
+  .dream-cta-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 48px 40px;
+    gap: 32px;
+  }
+
+  .dream-cta-content {
+    text-align: center;
+  }
+
+  .dream-cta-content p {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .dream-cta-content h2 span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .cta-icon-wrapper {
+    margin: 0 auto 24px;
+  }
+
+  .dream-cta-action {
+    width: 100%;
+  }
+
+  .dream-cta-btn {
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .dream-cta {
+    padding: 60px 16px;
+  }
+
+  .dream-cta-container {
+    padding: 36px 24px;
+    border-radius: 24px;
+    gap: 28px;
+  }
+
+  .cta-icon-wrapper {
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .cta-icon-wrapper svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dream-cta-content h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .dream-cta-content p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .dream-cta-btn {
+    padding: 14px 28px;
+    font-size: 15px;
+    gap: 10px;
+  }
+
+  .dream-cta-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dream-cta-container::before {
+    height: 2px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .dream-cta {
+    padding: 48px 12px;
+  }
+
+  .dream-cta-container {
+    padding: 28px 20px;
+    border-radius: 20px;
+    gap: 24px;
+  }
+
+  .cta-icon-wrapper {
+    margin-bottom: 16px;
+    padding: 8px;
+  }
+
+  .cta-icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dream-cta-content h2 {
+    font-size: 24px;
+  }
+
+  .dream-cta-content p {
+    font-size: 14px;
+  }
+
+  .dream-cta-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+/* Animation for container on scroll */
+.dream-cta-container {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

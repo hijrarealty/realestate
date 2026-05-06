@@ -1,0 +1,168 @@
+/* ===============================
+WHY CHOOSE US – LUXURY EDITORIAL
+=============================== */
+
+.why {
+  padding: 120px 20px;
+  background: #ffffff;
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+/* LEFT CONTENT */
+
+.why-label {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #1F3D2B;
+  margin-bottom: 18px;
+  display: inline-block;
+}
+
+.why-title {
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 22px;
+  color: #1F3D2B;
+}
+
+.why-title span {
+  color: #000;
+}
+
+.why-text {
+  font-size: 18px;
+  color: #6b7280;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* RIGHT FEATURES */
+
+.why-features {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  position: relative;
+}
+
+.why-features::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #1F3D2B,
+    transparent
+  );
+}
+
+/* FEATURE ITEM */
+
+.why-feature {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px 32px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fafafa 100%
+  );
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.why-feature.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ICON */
+
+.why-feature .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #b7e4c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-feature .icon img {
+  width: 28px;
+  height: 28px;
+}
+
+/* TEXT */
+
+.feature-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #081c15;
+}
+
+.feature-content p {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* HOVER */
+
+.why-feature:hover {
+  transform: translateY(-6px);
+}
+
+/* ===============================
+RESPONSIVE
+=============================== */
+
+@media (max-width: 1024px) {
+  .why-container {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .why-features::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .why {
+    padding: 80px 16px;
+  }
+
+  .why-title {
+    font-size: 32px;
+  }
+
+  .why-text {
+    font-size: 16px;
+  }
+
+  .why-feature {
+    padding: 24px;
+  }
+}

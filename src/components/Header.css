@@ -1,0 +1,310 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Satoshi", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ===============================
+HEADER BASE
+=============================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.header-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1002;
+}
+
+/* ===============================
+LOGO - ENLARGED
+=============================== */
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Even larger on desktop */
+@media (min-width: 1024px) {
+  .logo-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ===============================
+NAVIGATION (DESKTOP)
+=============================== */
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #52b788;
+}
+
+.header.scrolled .nav-link {
+  color: #1F3D2B;
+}
+
+.header.scrolled .nav-link:hover {
+  color: #C8A96B;
+}
+
+/* ===============================
+ACTIONS
+=============================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ===============================
+CONTACT BUTTON
+=============================== */
+
+.contact-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #C8A96B;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(200, 169, 107, 0.3);
+}
+
+.contact-btn:focus,
+.contact-btn:active,
+.contact-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===============================
+HAMBURGER
+=============================== */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1003;
+  position: relative;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+
+
+.header.scrolled .hamburger span {
+  background: #1F3D2B;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu open state */
+.header.menu-open .hamburger span {
+  background: #1F3D2B;
+}
+
+/* ===============================
+MOBILE OVERLAY
+=============================== */
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===============================
+MOBILE NAVIGATION - IMPROVED UI
+=============================== */
+
+@media (max-width: 900px) {
+  .header {
+    height: 70px;
+  }
+
+  .logo-img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    flex-direction: column;
+    padding: 100px 28px 40px 28px;
+    gap: 20px;
+    transform: none;
+    opacity: 1;
+    pointer-events: none;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  .nav.open {
+    right: 0;
+    pointer-events: auto;
+  }
+
+  .header.menu-open {
+    background: #ffffff;
+  }
+
+  .nav-link {
+    color: #1F3D2B;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .nav-link:hover {
+    color: #C8A96B;
+    border-bottom-color: #C8A96B;
+    transform: translateX(4px);
+  }
+
+  /* Mobile Menu Header */
+  .nav::before {
+    content: "Menu";
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F3D2B;
+    letter-spacing: -0.5px;
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .nav {
+    width: 85%;
+    padding: 100px 20px 40px 20px;
+  }
+  
+  .nav-link {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  
+  .nav::before {
+    font-size: 22px;
+    top: 24px;
+    left: 20px;
+  }
+
+  .logo-img {
+    width: 50px;
+    height: 50px;
+  }
+}

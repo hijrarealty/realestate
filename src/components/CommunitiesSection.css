@@ -1,0 +1,224 @@
+/* ===============================
+COMMUNITIES SECTION
+=============================== */
+
+.communities {
+  padding: 120px 20px;
+  background: #ffffff;
+}
+
+.communities-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===============================
+HEADER
+=============================== */
+
+.communities-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 70px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #081c15;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.section-title span {
+  color: #124f3a;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ===============================
+TRUE BENTO GRID
+=============================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 20px;
+}
+
+/* ===============================
+CARD BASE
+=============================== */
+
+.community-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.community-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===============================
+BENTO SIZES
+=============================== */
+
+.community-card.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.community-card.medium {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.community-card.small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* ===============================
+OVERLAY
+=============================== */
+
+.community-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+/* ===============================
+CONTENT
+=============================== */
+
+.community-card .content {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  color: #ffffff;
+}
+
+.count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #65ffb7;
+  margin-bottom: 6px;
+}
+
+.community-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.community-card p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+/* ===============================
+CTA (FIXED HERE ✅)
+=============================== */
+
+.community-card button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.community-card button:hover {
+  background: #1F3D2B;
+  border-color: #8FB996;
+  color: #ffffff; /* ✅ TEXT STAYS WHITE */
+}
+
+/* ===============================
+HOVER
+=============================== */
+
+.community-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ===============================
+TABLET
+=============================== */
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 240px;
+  }
+
+  .community-card.large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .community-card.medium {
+    grid-row: span 1;
+  }
+}
+
+/* ===============================
+MOBILE
+=============================== */
+
+@media (max-width: 640px) {
+  .communities {
+    padding: 80px 16px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
+    gap: 16px;
+  }
+
+  .community-card {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  .community-card h3 {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+}
