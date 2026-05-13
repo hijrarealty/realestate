@@ -1,168 +1,308 @@
-/* ===============================
-WHY CHOOSE US – LUXURY EDITORIAL
-=============================== */
+/* ===================================
+   WHY CHOOSE US - MODERN LUXURY UI
+   =================================== */
+
+:root {
+  --primary-green: #003b1f;
+  --primary-gold: #b8822c;
+  --light-gold: #c9ab6a;
+  --brown-gold: #95663d;
+  --white: #ffffff;
+  --light-bg: #f8f8f8;
+  --text-gray: #6b7280;
+}
+
+/* ===================================
+   SECTION
+   =================================== */
 
 .why {
-  padding: 120px 20px;
-  background: #ffffff;
+  padding: 110px 22px;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8f8f8 100%
+    );
+
+  overflow: hidden;
 }
 
 .why-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 100px;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
   align-items: center;
 }
 
-/* LEFT CONTENT */
+/* ===================================
+   LEFT SIDE
+   =================================== */
+
+.why-content {
+  max-width: 560px;
+}
 
 .why-label {
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  color: #1F3D2B;
-  margin-bottom: 18px;
   display: inline-block;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--primary-gold);
+
+  background: rgba(184,130,44,0.1);
+
+  padding: 8px 16px;
+  border-radius: 30px;
+
+  margin-bottom: 22px;
 }
 
 .why-title {
-  font-size: clamp(38px, 5vw, 58px);
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.05;
   font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 22px;
-  color: #1F3D2B;
+
+  color: var(--primary-green);
+
+  margin-bottom: 24px;
 }
 
 .why-title span {
-  color: #000;
+  display: block;
+  color: #111111;
 }
 
 .why-text {
-  font-size: 18px;
-  color: #6b7280;
-  max-width: 480px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-gray);
+
+  margin-bottom: 38px;
+
+  max-width: 520px;
 }
 
-/* RIGHT FEATURES */
+/* ===================================
+   STATS
+   =================================== */
+
+.why-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  min-width: 180px;
+
+  background: white;
+
+  padding: 24px;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.05),
+    0 2px 4px rgba(0,0,0,0.04);
+
+  border: 1px solid rgba(0,0,0,0.04);
+
+  transition: transform 0.25s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-4px);
+}
+
+.stat-box h3 {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--primary-green);
+
+  margin-bottom: 8px;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+/* ===================================
+   RIGHT SIDE
+   =================================== */
 
 .why-features {
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  position: relative;
+  gap: 24px;
 }
 
-.why-features::before {
-  content: "";
-  position: absolute;
-  left: 28px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #1F3D2B,
-    transparent
-  );
-}
-
-/* FEATURE ITEM */
+/* ===================================
+   FEATURE CARD
+   =================================== */
 
 .why-feature {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 24px;
+  display: flex;
   align-items: flex-start;
-  padding: 28px 32px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #fafafa 100%
-  );
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  gap: 20px;
 
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
+  background: rgba(255,255,255,0.92);
+
+  backdrop-filter: blur(10px);
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(0,0,0,0.04);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.why-feature.show {
-  opacity: 1;
-  transform: translateY(0);
+/* LIGHT HOVER */
+
+.why-feature:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.08);
 }
 
-/* ICON */
+/* ===================================
+   ICON
+   =================================== */
 
-.why-feature .icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: #b7e4c7;
+.feature-icon {
+  width: 68px;
+  height: 68px;
+
+  min-width: 68px;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(184,130,44,0.12),
+      rgba(201,171,106,0.2)
+    );
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.why-feature .icon img {
-  width: 28px;
-  height: 28px;
+.feature-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
-/* TEXT */
+/* ===================================
+   TEXT
+   =================================== */
 
 .feature-content h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 8px;
-  color: #081c15;
+  color: var(--primary-green);
+
+  margin-bottom: 10px;
 }
 
 .feature-content p {
   font-size: 15px;
-  color: #6b7280;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: var(--text-gray);
 }
 
-/* HOVER */
-
-.why-feature:hover {
-  transform: translateY(-6px);
-}
-
-/* ===============================
-RESPONSIVE
-=============================== */
+/* ===================================
+   RESPONSIVE
+   =================================== */
 
 @media (max-width: 1024px) {
+
   .why-container {
     grid-template-columns: 1fr;
-    gap: 70px;
+    gap: 60px;
   }
 
-  .why-features::before {
-    display: none;
+  .why-content {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+
   .why {
     padding: 80px 16px;
   }
 
   .why-title {
-    font-size: 32px;
+    font-size: 42px;
   }
 
   .why-text {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .why-feature {
-    padding: 24px;
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .feature-content h3 {
+    font-size: 20px;
+  }
+
+  .feature-content p {
+    font-size: 14px;
+  }
+
+  .feature-icon {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+  }
+
+  .feature-icon img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .why-title {
+    font-size: 34px;
+  }
+
+  .why-stats {
+    flex-direction: column;
+  }
+
+  .stat-box {
+    width: 100%;
+  }
+
+  .why-feature {
+    flex-direction: column;
+  }
+
+  .feature-icon {
+    margin-bottom: 4px;
   }
 }

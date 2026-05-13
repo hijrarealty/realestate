@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./CommunitiesSection.css";
-
 import downtown from "../assets/downtown.jpg";
 import marina from "../assets/marina.jpg";
 import palm from "../assets/palm.jpg";
@@ -9,136 +8,155 @@ import jbr from "../assets/jbr.jpg";
 import dubaiHills from "../assets/dubai.jpg";
 import city from "../assets/city.jpg";
 
-const CommunitiesSection = () => {
-  const sectionRef = useRef(null);
+const communities = [
+  {
+    id: 1,
+    title: "Downtown Dubai",
+    image: downtown,
+    properties: 145,
+    tag: "Icon District",
+    description:
+      "Luxury residences surrounding the iconic Burj Khalifa skyline with unmatched views.",
+  },
+  {
+    id: 2,
+    title: "Business Bay",
+    image: businessBay,
+    properties: 178,
+    tag: "Waterfront",
+    description:
+      "Modern waterfront living with premium high-rise apartments and canal views.",
+  },
+  {
+    id: 3,
+    title: "Dubai Marina",
+    image: marina,
+    properties: 230,
+    tag: "Marina Life",
+    description: "Waterfront lifestyle with world-class entertainment.",
+  },
+  {
+    id: 4,
+    title: "Palm Jumeirah",
+    image: palm,
+    properties: 90,
+    tag: "Ultra Luxury",
+    description: "Exclusive beachfront villas and ultra luxury residences.",
+  },
+  {
+    id: 5,
+    title: "JBR Beach",
+    image: jbr,
+    properties: 120,
+    tag: "Beachfront",
+    description: "Vibrant beachfront community with premium towers.",
+  },
+  {
+    id: 6,
+    title: "Dubai Hills",
+    image: dubaiHills,
+    properties: 160,
+    tag: "Green Living",
+    description: "Green luxury community with championship golf residences.",
+  },
+  {
+    id: 7,
+    title: "City Walk",
+    image: city,
+    properties: 110,
+    tag: "Urban Chic",
+    description: "Contemporary urban lifestyle with luxury retail and cafés.",
+  },
+];
+
+const CommunityCard = ({ item, index }) => {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
-    const items = sectionRef.current.querySelectorAll(".community-card");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            entry.target.style.transitionDelay = `${index * 0.08}s`;
-            entry.target.classList.add("show");
-          }
-        });
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
-
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="communities" className="communities" ref={sectionRef}>
-      <div className="communities-container">
-        {/* Header */}
-        <div className="communities-header">
-          <span className="section-label">EXPLORE UAE</span>
-          <h2 className="section-title">
-            Popular <span>Communities</span>
+    <div
+      ref={ref}
+      className={`community-card card-${index + 1} ${visible ? "is-visible" : ""}`}
+      style={{ "--delay": `${index * 80}ms` }}
+    >
+      <img src={item.image} alt={item.title} className="card-img" />
+      <div className="card-overlay" />
+
+      <div className="card-top-row">
+        <span className="card-tag">{item.tag}</span>
+        <span className="card-index">0{item.id}</span>
+      </div>
+
+      <div className="card-body">
+        <p className="card-props">
+          <span className="props-dot" />
+          {item.properties} Properties
+        </p>
+        <h3 className="card-title">{item.title}</h3>
+        <p className="card-desc">{item.description}</p>
+        <button className="card-btn" aria-label={`Explore ${item.title}`}>
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7h10M7 2l5 5-5 5"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const CommunitiesSection = () => {
+  return (
+    <section id="communities" className="communities-section">
+      <div className="communities-wrap">
+
+        {/* ── HEADER ── */}
+        <header className="communities-header">
+          <div className="header-eyebrow">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-text">Explore UAE</span>
+            <span className="eyebrow-line" />
+          </div>
+          <h2 className="header-title">
+            Discover Premium<br />
+            <em>Communities</em>
           </h2>
-          <p className="section-subtitle">
-            Discover the most sought-after neighborhoods across the UAE, each
-            offering a distinct lifestyle and investment opportunity.
+          <p className="header-sub">
+            Dubai's most prestigious destinations offering exceptional
+            lifestyles, investment opportunities, and world-class living.
           </p>
+        </header>
+
+        {/* ── GRID ── */}
+        <div className="communities-grid">
+          {communities.map((item, i) => (
+            <CommunityCard key={item.id} item={item} index={i} />
+          ))}
         </div>
 
-        {/* Bento Grid */}
-        <div className="bento-grid">
-          <div
-            className="community-card large"
-            style={{ backgroundImage: `url(${downtown})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">145 Properties</span>
-              <h3>Downtown Dubai</h3>
-              <p>Iconic city living near Burj Khalifa and Dubai Mall.</p>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card medium"
-            style={{ backgroundImage: `url(${businessBay})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">178 Properties</span>
-              <h3>Business Bay</h3>
-              <p>Modern high-rises with canal-side residences.</p>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card medium"
-            style={{ backgroundImage: `url(${jbr})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">120 Properties</span>
-              <h3>JBR</h3>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card small"
-            style={{ backgroundImage: `url(${marina})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">230 Properties</span>
-              <h3>Dubai Marina</h3>
-              <p>Waterfront lifestyle with skyline views.</p>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card small"
-            style={{ backgroundImage: `url(${palm})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">90 Properties</span>
-              <h3>Palm Jumeirah</h3>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card small"
-            style={{ backgroundImage: `url(${dubaiHills})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">160 Properties</span>
-              <h3>Dubai Hills</h3>
-              <button>Explore →</button>
-            </div>
-          </div>
-
-          <div
-            className="community-card small"
-            style={{ backgroundImage: `url(${city})` }}
-          >
-            <div className="overlay" />
-            <div className="content">
-              <span className="count">110 Properties</span>
-              <h3>City Walk</h3>
-              <p>Urban lifestyle with boutique living and cafés.</p>
-              <button>Explore →</button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-export default CommunitiesSection;
+export default CommunitiesSection;  

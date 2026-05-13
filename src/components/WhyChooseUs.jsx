@@ -1,91 +1,74 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "./WhyChooseUs.css";
 
 import luxuryIcon from "../assets/luxury.png";
 import guidanceIcon from "../assets/guidance.png";
 import supportIcon from "../assets/support.png";
 
+const features = [
+  {
+    id: 1,
+    icon: luxuryIcon,
+    title: "Luxury Listings Only",
+    text: "We exclusively feature premium properties that meet the highest standards of design, quality, and prime locations.",
+  },
+  {
+    id: 2,
+    icon: guidanceIcon,
+    title: "Expert Guidance",
+    text: "Our experienced consultants provide personalized advice to help you secure the perfect property aligned with your lifestyle.",
+  },
+  {
+    id: 3,
+    icon: supportIcon,
+    title: "End-to-End Support",
+    text: "From discovery to handover, we manage every step of your real estate journey with dedication and care.",
+  },
+];
+
 const WhyChooseUs = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const cards = sectionRef.current.querySelectorAll(".why-feature");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            entry.target.style.transitionDelay = `${index * 0.15}s`;
-            entry.target.classList.add("show");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      id="why-choose"
-      className="why"
-      ref={sectionRef}
-    >
+    <section id="why-choose" className="why">
       <div className="why-container">
-        {/* LEFT */}
+
+        {/* LEFT CONTENT */}
         <div className="why-content">
-          <span className="why-label">WHY CHOOSE US</span>
+
+          <span className="why-label">
+            WHY CHOOSE HIJRA REALTY
+          </span>
+
           <h2 className="why-title">
-            Your Trusted <span>Support</span>
+            Elevating Your
+            <span> Property Journey</span>
           </h2>
+
           <p className="why-text">
-            We’re committed to making your property journey seamless,
-            transparent, and rewarding with expert-driven solutions.
+            We deliver premium real estate experiences through
+            expert consultation, curated luxury listings, and
+            dedicated client support tailored to your goals.
           </p>
+
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT SIDE */}
         <div className="why-features">
-          <div className="why-feature">
-            <div className="icon">
-              <img src={luxuryIcon} alt="Luxury Listings" />
-            </div>
-            <div className="feature-content">
-              <h3>Luxury Listings Only</h3>
-              <p>
-                We exclusively feature premium properties that meet the highest
-                standards of design, quality, and prime locations.
-              </p>
-            </div>
-          </div>
 
-          <div className="why-feature">
-            <div className="icon">
-              <img src={guidanceIcon} alt="Expert Guidance" />
-            </div>
-            <div className="feature-content">
-              <h3>Expert Guidance</h3>
-              <p>
-                Our experienced consultants provide personalized advice to help
-                you secure the perfect property aligned with your lifestyle.
-              </p>
-            </div>
-          </div>
+          {features.map((item) => (
+            <div key={item.id} className="why-feature">
 
-          <div className="why-feature">
-            <div className="icon">
-              <img src={supportIcon} alt="End to End Support" />
+              <div className="feature-icon">
+                <img src={item.icon} alt={item.title} />
+              </div>
+
+              <div className="feature-content">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+
             </div>
-            <div className="feature-content">
-              <h3>End-to-End Support</h3>
-              <p>
-                From discovery to handover, we manage every step of your real
-                estate journey with dedication and care.
-              </p>
-            </div>
-          </div>
+          ))}
+
         </div>
       </div>
     </section>

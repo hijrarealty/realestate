@@ -1,34 +1,103 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./DreamHomeCTA.css";
 
 const DreamHomeCTA = () => {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.18 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section className="dream-cta">
-      <div className="dream-cta-container">
-        {/* LEFT CONTENT */}
-        <div className="dream-cta-content">
-          <div className="cta-icon-wrapper">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 9L12 3L21 9L12 15L3 9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M5 12v6a2 2 0 002 2h10a2 2 0 002-2v-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <section className="dcta-section">
+      {/* background blobs */}
+      <span className="dcta-blob dcta-blob--l" aria-hidden="true" />
+      <span className="dcta-blob dcta-blob--r" aria-hidden="true" />
+
+      <div className="dcta-wrap">
+        <div
+          ref={ref}
+          className={`dcta-card ${visible ? "dcta-card--in" : ""}`}
+        >
+          {/* shimmer top bar */}
+          <span className="dcta-shimmer" aria-hidden="true" />
+
+          {/* dot texture */}
+          <span className="dcta-texture" aria-hidden="true" />
+
+          {/* ── ICON ── */}
+          <div className="dcta-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"
+                stroke="currentColor" strokeWidth="1.6"
+                strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 21V12h6v9"
+                stroke="currentColor" strokeWidth="1.6"
+                strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <h2>Looking for a <span>Dream Home</span>?</h2>
-          <p>
-            We help you turn your vision into reality with exclusive properties
-            and expert guidance tailored to your needs.
-          </p>
-        </div>
 
-        {/* RIGHT ACTION */}
-        <div className="dream-cta-action">
-          <button className="dream-cta-btn">
-            Explore Properties
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          {/* ── LEFT TEXT ── */}
+          <div className="dcta-left">
+            <p className="dcta-eyebrow">
+              <span className="dcta-eyebrow__dot" />
+              Personalized Property Search
+            </p>
+            <h2 className="dcta-heading">
+              Looking for Your<br />
+              <span>Dream Home?</span>
+            </h2>
+            <p className="dcta-body">
+              We match you with Dubai's finest properties — from
+              waterfront apartments to exclusive villas — with expert
+              guidance every step of the way.
+            </p>
+
+            {/* trust pills */}
+            <div className="dcta-pills">
+              <span className="dcta-pill">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Free Consultation
+              </span>
+              <span className="dcta-pill">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                500+ Listings
+              </span>
+              <span className="dcta-pill">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Verified Properties
+              </span>
+            </div>
+          </div>
+
+          {/* ── RIGHT CTA ── */}
+          <div className="dcta-right">
+            <button className="dcta-btn dcta-btn--primary">
+              Explore Properties
+              <span className="dcta-btn__arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M8 3l5 5-5 5"
+                    stroke="currentColor" strokeWidth="1.8"
+                    strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </button>
+            <button className="dcta-btn dcta-btn--ghost">
+              Talk to an Agent
+            </button>
+          </div>
         </div>
       </div>
     </section>

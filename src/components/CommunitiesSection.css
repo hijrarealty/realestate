@@ -1,224 +1,404 @@
-/* ===============================
-COMMUNITIES SECTION
-=============================== */
+/* ============================================================
+   COMMUNITIES SECTION — HIJRA REALTY
+   Luxury editorial grid redesign
+   ============================================================ */
 
-.communities {
-  padding: 120px 20px;
-  background: #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --clr-green:      #003b1f;
+  --clr-gold:       #b8822c;
+  --clr-gold-light: #d4a75a;
+  --clr-gold-dim:   rgba(184,130,44,0.18);
+  --clr-white:      #ffffff;
+  --clr-off:        #f5f3ef;
+  --clr-text:       #1a1a1a;
+  --clr-muted:      #6b7280;
+
+  /* --font-display:   'Playfair Display', Georgia, serif; */
+  --font-body:      'DM Sans', system-ui, sans-serif;
+
+  --radius-card:    24px;
+  --ease-out:       cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.communities-container {
-  max-width: 1200px;
+/* ── SECTION ─────────────────────────────────────────────── */
+.communities-section {
+  font-family: var(--font-body);
+  padding: 120px 24px 130px;
+  background: var(--clr-off);
+  overflow: hidden;
+}
+
+.communities-wrap {
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* ===============================
-HEADER
-=============================== */
-
+/* ── HEADER ──────────────────────────────────────────────── */
 .communities-header {
   text-align: center;
-  max-width: 720px;
-  margin: 0 auto 70px;
+  max-width: 680px;
+  margin: 0 auto 72px;
 }
 
-.section-label {
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  color: #081c15;
-  margin-bottom: 14px;
+.header-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.section-title {
-  font-size: clamp(36px, 5vw, 56px);
+.eyebrow-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--clr-gold);
+  opacity: 0.6;
+}
+
+.eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5.5vw, 68px);
   font-weight: 900;
-  margin-bottom: 16px;
-  color: #000;
+  line-height: 1.06;
+  color: var(--clr-text);
+  margin: 0 0 22px;
 }
 
-.section-title span {
-  color: #124f3a;
+.header-title em {
+  font-style: italic;
+  color: var(--clr-green);
 }
 
-.section-subtitle {
-  font-size: 17px;
-  color: #6b7280;
-  line-height: 1.6;
+.header-sub {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--clr-muted);
+  font-weight: 300;
+  margin: 0;
 }
 
-/* ===============================
-TRUE BENTO GRID
-=============================== */
-
-.bento-grid {
+/* ── GRID ────────────────────────────────────────────────── */
+/*
+  12-col grid — spans that always total 12 per row:
+  Row 1 → card-1 (7) + card-2 (5)  = 12
+  Row 2 → card-3 (4) + card-4 (4) + card-5 (4) = 12
+  Row 3 → card-6 (5) + card-7 (7)  = 12
+*/
+.communities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 220px;
+  grid-template-columns: repeat(12, 1fr);
   gap: 20px;
 }
 
-/* ===============================
-CARD BASE
-=============================== */
+/* ── CARD SPANS & HEIGHTS ────────────────────────────────── */
+.card-1 { grid-column: span 7; min-height: 540px; }
+.card-2 { grid-column: span 5; min-height: 540px; }
+.card-3 { grid-column: span 4; min-height: 310px; }
+.card-4 { grid-column: span 4; min-height: 310px; }
+.card-5 { grid-column: span 4; min-height: 310px; }
+.card-6 { grid-column: span 5; min-height: 400px; }
+.card-7 { grid-column: span 7; min-height: 400px; }
 
+/* ── CARD BASE ───────────────────────────────────────────── */
 .community-card {
   position: relative;
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
+  cursor: pointer;
+  background: #111;
+  isolation: isolate;
 
+  /* entry animation */
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s var(--ease-out) var(--delay, 0ms),
+    transform 0.6s var(--ease-out) var(--delay, 0ms),
+    box-shadow 0.4s ease;
 }
 
-.community-card.show {
+.community-card.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===============================
-BENTO SIZES
-=============================== */
-
-.community-card.large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.community-card.medium {
-  grid-column: span 1;
-  grid-row: span 2;
-}
-
-.community-card.small {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
-/* ===============================
-OVERLAY
-=============================== */
-
-.community-card .overlay {
+/* ── CARD IMAGE ──────────────────────────────────────────── */
+.card-img {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.85) 100%
-  );
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+  transform: scale(1.02);
 }
 
-/* ===============================
-CONTENT
-=============================== */
+.community-card:hover .card-img {
+  transform: scale(1.09);
+}
 
-.community-card .content {
+/* ── GRADIENT OVERLAY ────────────────────────────────────── */
+.card-overlay {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  color: #ffffff;
+  inset: 0;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.30) 40%,
+      rgba(0,0,0,0.80) 100%
+    );
+  z-index: 1;
+  transition: background 0.4s ease;
 }
 
-.count {
-  font-size: 13px;
-  font-weight: 600;
-  color: #65ffb7;
-  margin-bottom: 6px;
+.community-card:hover .card-overlay {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(0,0,0,0.08) 0%,
+      rgba(0,0,0,0.40) 40%,
+      rgba(0,0,0,0.88) 100%
+    );
 }
 
-.community-card h3 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 6px;
+/* ── TOP ROW ─────────────────────────────────────────────── */
+.card-top-row {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.community-card p {
-  font-size: 14px;
-  opacity: 0.85;
-  margin-bottom: 14px;
-}
-
-/* ===============================
-CTA (FIXED HERE ✅)
-=============================== */
-
-.community-card button {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #ffffff;
-  padding: 8px 18px;
+.card-tag {
+  padding: 6px 14px;
   border-radius: 999px;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.card-index {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── CARD BODY ───────────────────────────────────────────── */
+.card-body {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 26px;
+  z-index: 2;
+  color: white;
+}
+
+.card-props {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--clr-gold-light);
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+
+.props-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+/* Small cards — compact title */
+.card-3 .card-title,
+.card-4 .card-title,
+.card-5 .card-title {
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.card-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  font-weight: 300;
+  margin: 0 0 20px;
+  max-width: 380px;
+
+  /* hide on small cards to keep them clean */
+  display: none;
+}
+
+/* Show description only on tall cards */
+.card-1 .card-desc,
+.card-2 .card-desc,
+.card-6 .card-desc,
+.card-7 .card-desc {
+  display: block;
+}
+
+/* ── EXPLORE BUTTON ──────────────────────────────────────── */
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  background: transparent;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.community-card button:hover {
-  background: #1F3D2B;
-  border-color: #8FB996;
-  color: #ffffff; /* ✅ TEXT STAYS WHITE */
+.card-btn svg {
+  transition: transform 0.25s ease;
 }
 
-/* ===============================
-HOVER
-=============================== */
+.community-card:hover .card-btn {
+  background: var(--clr-gold);
+  border-color: var(--clr-gold);
+}
 
+.community-card:hover .card-btn svg {
+  transform: translateX(3px);
+}
+
+/* ── CARD HOVER LIFT ─────────────────────────────────────── */
 .community-card:hover {
-  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0,0,0,0.22);
 }
 
-/* ===============================
-TABLET
-=============================== */
+/* ── SCROLL ENTRY — gold left border accent on 1st card ─── */
+.card-1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--clr-gold), transparent);
+  z-index: 3;
+  border-radius: 0 0 0 var(--radius-card);
+}
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ── Tablet ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 240px;
+  .communities-section { padding: 90px 20px 100px; }
+
+  .communities-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4,
+  .card-5,
+  .card-6,
+  .card-7 {
+    grid-column: span 1;
+    min-height: 400px;
   }
 
-  .community-card.large {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
+  .card-1 .card-desc,
+  .card-2 .card-desc,
+  .card-6 .card-desc,
+  .card-7 .card-desc { display: none; }
 
-  .community-card.medium {
-    grid-row: span 1;
-  }
+  .card-3 .card-title,
+  .card-4 .card-title,
+  .card-5 .card-title { font-size: 22px; }
 }
 
-/* ===============================
-MOBILE
-=============================== */
+/* ── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .communities-section { padding: 72px 16px 84px; }
+  .communities-header  { margin-bottom: 52px; }
 
-@media (max-width: 640px) {
-  .communities {
-    padding: 80px 16px;
-  }
+  .header-title { font-size: 38px; }
+  .header-sub   { font-size: 15px; }
 
-  .bento-grid {
+  .communities-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 260px;
-    gap: 16px;
+    gap: 14px;
   }
 
-  .community-card {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4,
+  .card-5,
+  .card-6,
+  .card-7 {
+    grid-column: 1 / -1;
+    min-height: 340px;
   }
 
-  .community-card h3 {
-    font-size: 18px;
-  }
+  .card-btn { width: 100%; justify-content: center; }
 
-  .section-title {
-    font-size: 32px;
-  }
+  .card-1::after { display: none; }
+}
+
+/* ── Small Mobile ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .header-title { font-size: 32px; }
+
+  .community-card { border-radius: 18px; }
+
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4,
+  .card-5,
+  .card-6,
+  .card-7 { min-height: 300px; }
+
+  .card-title { font-size: 20px !important; }
 }

@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
-import whiteLogo from "../assets/logo-white.png"; // White logo for transparent header
-import colorLogo from "../assets/logo-color.png"; // Color logo for scrolled header
+import colorLogo from "../assets/logo-color.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const [scrolled, setScrolled] = useState(false);
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-    setMenuOpen(false);
-  };
+  const navigate = useNavigate();
 
-  const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setMenuOpen(false);
-  };
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,63 +18,91 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔒 lock body scroll when menu open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
-  }, [menuOpen]);
+  const scrollToSection = (id) => {
+
+    if (location.pathname !== "/") {
+      navigate("/");
+
+      setTimeout(() => {
+        const section = document.getElementById(id);
+
+        if (section) {
+          section.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+
+    } else {
+
+      const section = document.getElementById(id);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    }
+
+    setMenuOpen(false);
+  };
 
   return (
-    <header
-      className={`header ${scrolled ? "scrolled" : ""} ${
-        menuOpen ? "menu-open" : ""
-      }`}
-    >
+    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+
       <div className="header-container">
-        {/* Logo with Image - No Text */}
-        <div className="logo" onClick={handleLogoClick}>
-          <img 
-            src={scrolled ? colorLogo : whiteLogo} 
-            alt="Hijra Realty Group" 
-            className="logo-img" 
+
+        {/* LOGO */}
+
+        <div
+          className="logo"
+          onClick={() => navigate("/")}
+        >
+          <img
+            src={colorLogo}
+            alt="Hijra Realty"
+            className="logo-img"
           />
         </div>
 
-        {/* Navigation */}
+        {/* NAVIGATION */}
+
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <span className="nav-link" onClick={() => scrollToSection("hero")}>
+
+          <button onClick={() => scrollToSection("hero")}>
             Home
-          </span>
-          <span
-            className="nav-link"
-            onClick={() => scrollToSection("properties")}
-          >
+          </button>
+
+          <button onClick={() => scrollToSection("properties")}>
             Properties
-          </span>
-          <span
-            className="nav-link"
-            onClick={() => scrollToSection("communities")}
-          >
+          </button>
+
+          <button onClick={() => scrollToSection("communities")}>
             Communities
-          </span>
-          <span className="nav-link" onClick={() => scrollToSection("about")}>
+          </button>
+
+          <button onClick={() => scrollToSection("about")}>
             About
-          </span>
-          <span
-            className="nav-link"
-            onClick={() => scrollToSection("why-choose")}
-          >
-            Why Choose
-          </span>
+          </button>
+
+          <button onClick={() => navigate("/contact")}>
+            Contact
+          </button>
+
         </nav>
 
-        {/* Actions */}
+        {/* ACTIONS */}
+
         <div className="header-actions">
+
           <button
             className="contact-btn"
-            onClick={() => scrollToSection("contact")}
+            onClick={() => navigate("/contact")}
           >
             Contact Us
           </button>
@@ -95,11 +115,20 @@ const Header = () => {
             <span />
             <span />
           </div>
+
         </div>
+
       </div>
-      
-      {/* Mobile Menu Overlay */}
-      {menuOpen && <div className="mobile-overlay" onClick={() => setMenuOpen(false)} />}
+
+      {/* OVERLAY */}
+
+      {menuOpen && (
+        <div
+          className="mobile-overlay"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
     </header>
   );
 };
