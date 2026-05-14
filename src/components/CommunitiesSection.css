@@ -402,3 +402,48 @@
 
   .card-title { font-size: 20px !important; }
 }
+
+
+/* ============================================================
+ACCESSIBILITY
+============================================================ */
+
+.card-btn:focus-visible {
+
+  outline: 2px solid var(--clr-gold);
+
+  outline-offset: 4px;
+}
+
+/* ============================================================
+PERFORMANCE OPTIMIZATION
+============================================================ */
+
+.community-card {
+
+  contain: layout paint;
+}
+
+.card-img {
+
+  display: block;
+
+  will-change: transform;
+}
+
+/* ============================================================
+REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .community-card,
+  .card-img,
+  .card-btn,
+  .card-overlay {
+
+    transition: none !important;
+
+    animation: none !important;
+  }
+}

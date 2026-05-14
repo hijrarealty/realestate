@@ -537,3 +537,54 @@
   .prem-modal        { padding: 16px; }
   .prem-modal__content { border-radius: 14px; }
 }
+
+/* ============================================================
+ACCESSIBILITY
+============================================================ */
+
+.prem-btn:focus-visible,
+.prem-thumb:focus-visible,
+.prem-modal__close:focus-visible {
+
+  outline: 2px solid var(--prem-gold);
+
+  outline-offset: 4px;
+}
+
+/* ============================================================
+PERFORMANCE OPTIMIZATION
+============================================================ */
+
+.prem-thumb,
+.prem-modal__content,
+.prem-right {
+
+  contain: layout paint;
+}
+
+.prem-thumb__img {
+
+  will-change: transform;
+
+  display: block;
+}
+
+/* ============================================================
+REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .prem-left,
+  .prem-right,
+  .prem-thumb,
+  .prem-thumb__img,
+  .prem-btn,
+  .prem-modal__content,
+  .prem-badge__ring {
+
+    transition: none !important;
+
+    animation: none !important;
+  }
+}

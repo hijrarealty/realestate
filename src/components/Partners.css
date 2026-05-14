@@ -358,3 +358,52 @@
 .partner-card:hover::before {
   opacity: 1;
 }
+
+
+
+
+/* ============================================================
+ACCESSIBILITY
+============================================================ */
+
+.partner-card:focus-within {
+
+  outline: 2px solid #C8A96B;
+
+  outline-offset: 4px;
+}
+
+/* ============================================================
+PERFORMANCE OPTIMIZATION
+============================================================ */
+
+.partners-grid,
+.partner-card,
+.partner-logo-wrapper {
+
+  contain: layout paint;
+}
+
+.partner-logo {
+
+  display: block;
+
+  will-change: transform;
+}
+
+/* ============================================================
+REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .partners-header,
+  .partners-grid,
+  .partner-card,
+  .partner-logo {
+
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

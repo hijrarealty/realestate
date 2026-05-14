@@ -101,7 +101,7 @@ const ContactPage = () => {
 
         {/* Hero Section */}
         <div className="contact-hero">
-          <div className="hero-container">
+          <div className="hero-containers">
             {/* <span className="hero-badge">
               <FaRegSmile />
               Get in Touch

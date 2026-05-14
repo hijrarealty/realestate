@@ -52,7 +52,7 @@
 .contact-hero {
   position: relative;
   padding: 100px 24px 60px;
-  background: linear-gradient(135deg, #053718 0%, #0a4a2a 100%);
+  background-color: black;
   overflow: hidden;
   z-index: 1;
 }
@@ -68,13 +68,23 @@
   transform: rotate(12deg);
 }
 
-.hero-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+.hero-containers {
+    position: relative;
+    width: 100vw;
+    height: 350px;
+    margin: 0 auto;
+    border-radius: 42px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    max-width: -webkit-fill-available !important;
+    contain: layout paint;
+    justify-content: center;
 }
-
+.nav a.active-contact-link {
+  color: #fff;
+  /* font-weight: 600; */
+}
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -699,4 +709,4 @@
   .map-wrapper {
     height: 280px;
   }
-}
+	}

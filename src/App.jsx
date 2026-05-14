@@ -29,15 +29,20 @@ HOME PAGE
 ========================= */
 
 const HomePage = () => {
-  const [filters, setFilters] = useState(null);
+  const [filters, setFilters] =
+    useState(null);
 
   return (
     <>
       <Header />
 
-      <HeroSection onSearch={setFilters} />
+      <HeroSection
+        onSearch={setFilters}
+      />
 
-      <PropertiesSection filters={filters} />
+      <PropertiesSection
+        filters={filters}
+      />
 
       <WhyChooseUs />
 
@@ -54,7 +59,6 @@ const HomePage = () => {
       <Partners />
 
       <Footer />
-      
     </>
   );
 };
@@ -66,7 +70,6 @@ APP
 const App = () => {
   return (
     <BrowserRouter>
-
       <Routes>
 
         {/* HOME */}
@@ -82,7 +85,6 @@ const App = () => {
         />
 
       </Routes>
-
     </BrowserRouter>
   );
 };

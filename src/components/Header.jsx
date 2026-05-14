@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
-import colorLogo from "../assets/logo-color.png";
-import { useNavigate, useLocation } from "react-router-dom";
+import colorLogo from "../assets/logo-white.png";
+
+import {
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 const Header = () => {
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
@@ -13,6 +19,7 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
@@ -20,79 +27,101 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () =>
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
   }, []);
 
   const scrollToSection = (id) => {
 
     if (location.pathname !== "/") {
-      navigate("/");
+      navigate(`/#${id}`);
 
-      setTimeout(() => {
-        const section = document.getElementById(id);
+      return;
+    }
 
-        if (section) {
-          section.scrollIntoView({
-            behavior: "smooth",
-          });
-        }
-      }, 100);
+    const section = document.getElementById(id);
 
-    } else {
-
-      const section = document.getElementById(id);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+      });
     }
 
     setMenuOpen(false);
+
   };
 
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+
+    <header
+      className={`header ${scrolled ? "scrolled" : ""}`}
+    >
 
       <div className="header-container">
 
         {/* LOGO */}
 
-        <div
+        <Link
+          to="/"
           className="logo"
-          onClick={() => navigate("/")}
+          aria-label="Hijra Realty Home"
         >
+
           <img
             src={colorLogo}
-            alt="Hijra Realty"
+            alt="Hijra Realty Logo"
             className="logo-img"
+            width="160"
+            height="60"
+            loading="eager"
+            decoding="async"
           />
-        </div>
+
+        </Link>
 
         {/* NAVIGATION */}
 
-        <nav className={`nav ${menuOpen ? "open" : ""}`}>
+        <nav
+          className={`nav ${menuOpen ? "open" : ""}`}
+          aria-label="Main Navigation"
+        >
 
-          <button onClick={() => scrollToSection("hero")}>
-            Home
-          </button>
+          <ul>
 
-          <button onClick={() => scrollToSection("properties")}>
-            Properties
-          </button>
+            <li>
+              <a href="/#hero" >
+                Home
+              </a>
+            </li>
 
-          <button onClick={() => scrollToSection("communities")}>
-            Communities
-          </button>
+            <li>
+              <a href="/#properties" >
+                Properties
+              </a>
+            </li>
 
-          <button onClick={() => scrollToSection("about")}>
-            About
-          </button>
+            <li>
+              <a href="/#communities" >
+                Communities
+              </a>
+            </li>
 
-          <button onClick={() => navigate("/contact")}>
-            Contact
-          </button>
+            <li>
+              <a href="/#about" >
+                About
+              </a>
+            </li>
+
+            <li>
+              <Link to="/contact" >
+                Contact
+              </Link>
+            </li>
+
+          </ul>
 
         </nav>
 
@@ -100,27 +129,33 @@ const Header = () => {
 
         <div className="header-actions">
 
-          <button
+          <Link
+            to="/contact"
             className="contact-btn"
-            onClick={() => navigate("/contact")}
           >
             Contact Us
-          </button>
+          </Link>
 
-          <div
+          <button
             className={`hamburger ${menuOpen ? "active" : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() =>
+              setMenuOpen(!menuOpen)
+            }
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
           >
+
             <span />
             <span />
             <span />
-          </div>
+
+          </button>
 
         </div>
 
       </div>
 
-      {/* OVERLAY */}
+      {/* MOBILE OVERLAY */}
 
       {menuOpen && (
         <div

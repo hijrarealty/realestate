@@ -1,36 +1,70 @@
 import React from "react";
+
 import "./VideoHero.css";
 
-/* 🔹 IMPORT YOUR OWN VIDEO HERE */
+/* VIDEO */
+
 import heroVideo from "../assets/hero-video-1.mp4";
 
 const VideoHero = () => {
+
   return (
-    <section className="video-hero">
-      {/* Background Video */}
+
+    <section
+      className="video-hero"
+      aria-labelledby="video-hero-heading"
+    >
+
+      {/* BACKGROUND VIDEO */}
+
       <video
         className="video-bg"
-        src={heroVideo}
         autoPlay
         muted
         loop
         playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+
+        <source
+          src={heroVideo}
+          type="video/mp4"
+        />
+
+      </video>
+
+      {/* OVERLAY */}
+
+      <div
+        className="video-overlay"
+        aria-hidden="true"
       />
 
-      {/* Overlay */}
-      <div className="video-overlay" />
+      {/* CONTENT */}
 
-      {/* Content */}
       <div className="video-content">
-        <h1>Where Luxury Meets Location</h1>
+
+        <h2 id="video-hero-heading">
+
+          Where Luxury
+          <br />
+
+          Meets Lifestyle
+
+        </h2>
+
         <p>
-          Step into a world of exclusive residences, timeless design, and unmatched living experiences.
+
+          Discover Dubai's most exclusive
+          residences, waterfront villas,
+          and iconic investment opportunities
+          crafted for elevated living.
+
         </p>
 
-        {/* <button className="play-btn" aria-label="Play Video">
-          ▶
-        </button> */}
       </div>
+
     </section>
   );
 };

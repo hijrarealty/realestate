@@ -325,3 +325,50 @@
   .au-accent--tl,
   .au-accent--br { display: none; }
 }
+
+
+/* ============================================================
+ACCESSIBILITY
+============================================================ */
+
+.au-feature:focus-within {
+
+  outline: 2px solid var(--au-gold);
+
+  outline-offset: 4px;
+}
+
+/* ============================================================
+PERFORMANCE OPTIMIZATION
+============================================================ */
+
+.au-visual,
+.au-content,
+.au-img-wrap {
+
+  contain: layout paint;
+}
+
+.au-img {
+
+  will-change: transform;
+
+  display: block;
+}
+
+/* ============================================================
+REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .au-visual,
+  .au-content,
+  .au-img,
+  .au-feature {
+
+    transition: none !important;
+
+    animation: none !important;
+  }
+}

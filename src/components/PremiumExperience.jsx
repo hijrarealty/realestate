@@ -1,174 +1,404 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+} from "react";
+
 import "./PremiumExperience.css";
+
 import premiumPoster from "../assets/premium-poster.jpg";
 import premiumVideo from "../assets/premium-video.mp4";
 
-
-
 const PremiumExperience = () => {
-  const [open, setOpen] = useState(false);
-  const [visible, setVisible] = useState(false);
+
+  const [open, setOpen] =
+    useState(false);
+
+  const [visible, setVisible] =
+    useState(false);
+
   const sectionRef = useRef(null);
+
   const videoRef = useRef(null);
 
   /* ── Scroll-triggered entry ── */
+
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    if (sectionRef.current) obs.observe(sectionRef.current);
+
+    const obs =
+      new IntersectionObserver(
+        ([entry]) => {
+
+          if (entry.isIntersecting) {
+
+            setVisible(true);
+
+            obs.disconnect();
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+
+    if (sectionRef.current) {
+      obs.observe(sectionRef.current);
+    }
+
     return () => obs.disconnect();
+
   }, []);
 
-  /* ── Lock body scroll while modal is open ── */
+  /* ── Lock body scroll ── */
+
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+
+    document.body.style.overflow =
+      open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+
   }, [open]);
 
-  /* ── Keyboard close ── */
+  /* ── ESC key close ── */
+
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") setOpen(false); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+
+    const handler = (e) => {
+
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener(
+      "keydown",
+      handler
+    );
+
+    return () =>
+      window.removeEventListener(
+        "keydown",
+        handler
+      );
+
   }, []);
 
-  const openModal  = () => setOpen(true);
-  const closeModal = () => { setOpen(false); if (videoRef.current) videoRef.current.pause(); };
+  const openModal = () => {
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+
+    setOpen(false);
+
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
 
   return (
     <>
-      {/* ══════════════════════════════════════
-          SECTION
-      ══════════════════════════════════════ */}
+
+      {/* SECTION */}
+
       <section
         ref={sectionRef}
-        className={`prem-section ${visible ? "prem-visible" : ""}`}
+        className={`
+          prem-section
+          ${visible ? "prem-visible" : ""}
+        `}
+        aria-labelledby="premium-title"
       >
+
         {/* decorative blobs */}
-        <span className="prem-blob prem-blob--tl" aria-hidden="true" />
-        <span className="prem-blob prem-blob--br" aria-hidden="true" />
+
+        <span
+          className="prem-blob prem-blob--tl"
+          aria-hidden="true"
+        />
+
+        <span
+          className="prem-blob prem-blob--br"
+          aria-hidden="true"
+        />
 
         <div className="prem-container">
 
-          {/* ── LEFT ─────────────────────────── */}
+          {/* LEFT */}
+
           <div className="prem-left">
 
             <div className="prem-eyebrow">
+
               <span className="prem-eyebrow__line" />
-              <span className="prem-eyebrow__text">Virtual Experience</span>
+
+              <span className="prem-eyebrow__text">
+                Virtual Experience
+              </span>
+
             </div>
 
-            <h2 className="prem-title">
-              Experience<br />
-              <span>Luxury Living</span><br />
+            <h2
+              className="prem-title"
+              id="premium-title"
+            >
+
+              Experience
+              <br />
+
+              <span>
+                Luxury Living
+              </span>
+
+              <br />
+
               Reimagined
+
             </h2>
 
             <p className="prem-body">
-              Step inside Dubai's most exclusive residences through immersive
-              virtual tours. Discover architecture, interiors, and lifestyle
-              details from anywhere in the world — at your own pace.
+
+              Step inside Dubai's most exclusive
+              residences through immersive
+              virtual tours. Discover architecture,
+              interiors, and lifestyle details
+              from anywhere in the world —
+              at your own pace.
+
             </p>
 
+            {/* ACTIONS */}
 
             <div className="prem-actions">
-              <button className="prem-btn prem-btn--primary" onClick={openModal}>
+
+              <button
+                className="
+                  prem-btn
+                  prem-btn--primary
+                "
+                onClick={openModal}
+                aria-label="Watch luxury property virtual tour"
+              >
+
                 <span className="prem-btn__icon">
-                  <svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor">
-                    <path d="M0 0.5v12l11-6L0 0.5z"/>
+
+                  <svg
+                    width="11"
+                    height="13"
+                    viewBox="0 0 11 13"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+
+                    <path d="M0 0.5v12l11-6L0 0.5z" />
+
                   </svg>
+
                 </span>
+
                 Watch Virtual Tour
+
               </button>
-              <button className="prem-btn prem-btn--ghost">
+
+              <button
+                className="
+                  prem-btn
+                  prem-btn--ghost
+                "
+                aria-label="Explore luxury properties"
+              >
+
                 Explore Properties
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
+
+                  <path
+                    d="M2 7h10M7 2l5 5-5 5"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+
                 </svg>
+
               </button>
+
             </div>
+
           </div>
 
-          {/* ── RIGHT ────────────────────────── */}
+          {/* RIGHT */}
+
           <div className="prem-right">
 
             {/* Floating badge */}
-            <div className="prem-badge" aria-hidden="true">
+
+            <div
+              className="prem-badge"
+              aria-hidden="true"
+            >
+
               <span className="prem-badge__ring" />
+
               <span className="prem-badge__inner">
+
                 <strong>4K</strong>
+
                 <small>Ultra HD</small>
+
               </span>
+
             </div>
 
-            {/* Thumbnail card */}
+            {/* Thumbnail */}
+
             <button
               className="prem-thumb"
               onClick={openModal}
-              aria-label="Play virtual tour video"
+              aria-label="Play luxury property virtual tour video"
             >
-              <img src={premiumPoster} alt="Luxury property virtual tour" className="prem-thumb__img" />
 
-              {/* dark gradient */}
-              <span className="prem-thumb__overlay" aria-hidden="true" />
+              <img
+                src={premiumPoster}
+                alt="Luxury property virtual tour preview"
+                className="prem-thumb__img"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="900"
+              />
 
-              {/* play ring */}
-              <span className="prem-thumb__play" aria-hidden="true">
-                <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
-                  <path d="M1 1.5l20 11L1 24.5V1.5z" fill="white" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+              {/* overlay */}
+
+              <span
+                className="prem-thumb__overlay"
+                aria-hidden="true"
+              />
+
+              {/* play */}
+
+              <span
+                className="prem-thumb__play"
+                aria-hidden="true"
+              >
+
+                <svg
+                  width="22"
+                  height="26"
+                  viewBox="0 0 22 26"
+                  fill="none"
+                >
+
+                  <path
+                    d="M1 1.5l20 11L1 24.5V1.5z"
+                    fill="white"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+
                 </svg>
+
               </span>
 
-              {/* bottom caption */}
+              {/* caption */}
+
               <span className="prem-thumb__caption">
-                <span className="prem-thumb__tag">Virtual Tour</span>
-                <span className="prem-thumb__dur">03:45 min</span>
+
+                <span className="prem-thumb__tag">
+                  Virtual Tour
+                </span>
+
+                <span className="prem-thumb__dur">
+                  03:45 min
+                </span>
+
               </span>
+
             </button>
 
-            {/* Decorative card behind thumbnail */}
-            <span className="prem-thumb-shadow" aria-hidden="true" />
+            {/* decorative shadow */}
+
+            <span
+              className="prem-thumb-shadow"
+              aria-hidden="true"
+            />
+
           </div>
 
         </div>
+
       </section>
 
-      {/* ══════════════════════════════════════
-          VIDEO MODAL
-      ══════════════════════════════════════ */}
+      {/* VIDEO MODAL */}
+
       {open && (
+
         <div
           className="prem-modal"
           role="dialog"
           aria-modal="true"
-          aria-label="Virtual tour video"
+          aria-label="Luxury property virtual tour video"
           onClick={closeModal}
         >
+
           <div
             className="prem-modal__content"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>
+              e.stopPropagation()
+            }
           >
+
             <button
               className="prem-modal__close"
               onClick={closeModal}
-              aria-label="Close video"
+              aria-label="Close video modal"
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+
+                <path
+                  d="M1 1l12 12M13 1L1 13"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+
               </svg>
+
             </button>
+
             <video
               ref={videoRef}
               src={premiumVideo}
               controls
               autoPlay
               playsInline
+              preload="metadata"
             />
+
           </div>
+
         </div>
+
       )}
+
     </>
   );
 };

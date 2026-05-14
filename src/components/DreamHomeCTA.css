@@ -427,3 +427,49 @@
   .dcta-blob--l,
   .dcta-blob--r { display: none; }
 }
+
+
+
+
+
+/* ============================================================
+ACCESSIBILITY
+============================================================ */
+
+.dcta-btn:focus-visible {
+
+  outline: 2px solid #ffffff;
+
+  outline-offset: 4px;
+}
+
+/* ============================================================
+PERFORMANCE OPTIMIZATION
+============================================================ */
+
+.dcta-card,
+.dcta-right {
+
+  contain: layout paint;
+}
+
+.dcta-btn {
+
+  will-change: transform;
+}
+
+/* ============================================================
+REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dcta-card,
+  .dcta-btn,
+  .dcta-shimmer {
+
+    transition: none !important;
+
+    animation: none !important;
+  }
+}
