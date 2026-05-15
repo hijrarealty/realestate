@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- ✅ Preconnect for speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- ✅ Title — 52 characters -->
+    <!-- Title — 52 characters -->
     <title>Hijra Realty Group | Luxury Properties Fujairah</title>
     <meta name="title" content="Hijra Realty Group | Luxury Properties Fujairah" />
 
-    <!-- ✅ Description — 150 characters -->
+    <!-- Description — 150 characters -->
     <meta name="description" content="Buy & sell luxury properties in Fujairah UAE with Hijra Realty Group. Verified listings, expert agents & legal support. Call +971 58 984 2522." />
 
-    <meta name="keywords" content="real estate Fujairah, property for sale Fujairah UAE, buy house Fujairah, luxury villa UAE, property dealers Fujairah, Fujairah Creative City" />
+    <meta name="keywords" content="real estate Fujairah, property for sale Fujairah UAE, buy house Fujairah, luxury villa UAE, property dealers Fujairah" />
     <meta name="author" content="Hijra Realty Group" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="theme-color" content="#0a1628" />
@@ -52,13 +58,18 @@
     <meta name="geo.position" content="25.1288;56.3265" />
     <meta name="ICBM" content="25.1288, 56.3265" />
 
-    <!-- ✅ Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- ✅ Google Analytics — deferred for performance -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', { send_page_view: false });
+      });
     </script>
 
     <!-- JSON-LD Structured Data -->
