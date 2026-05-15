@@ -212,6 +212,40 @@ const HomePage = () => {
   );
 };
 
+{/* ✅ Schema.org Microdata — visible to all crawlers */}
+<div
+  itemScope
+  itemType="https://schema.org/RealEstateAgent"
+  style={{ display: "none" }}
+>
+  <span itemProp="name">Hijra Realty Group</span>
+  <span itemProp="telephone">+971589842522</span>
+  <span itemProp="email">info@yourofficepartners.com</span>
+  <span itemProp="url">https://www.hijrarealtygroup.com</span>
+  <div
+    itemProp="address"
+    itemScope
+    itemType="https://schema.org/PostalAddress"
+  >
+    <span itemProp="streetAddress">
+      Fujairah Creative City - Media Free Zone, Twin Towers
+    </span>
+    <span itemProp="addressLocality">Fujairah</span>
+    <span itemProp="addressRegion">Fujairah</span>
+    <span itemProp="postalCode">4422</span>
+    <span itemProp="addressCountry">AE</span>
+  </div>
+  <div
+    itemProp="geo"
+    itemScope
+    itemType="https://schema.org/GeoCoordinates"
+  >
+    <span itemProp="latitude">25.1288</span>
+    <span itemProp="longitude">56.3265</span>
+  </div>
+  <span itemProp="openingHours">Mo-Sa 09:00-18:00</span>
+</div>
+
 /* =========================
    ✅ CONTACT PAGE
 ========================= */

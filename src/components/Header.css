@@ -450,7 +450,7 @@ TABLET + MOBILE
     align-items: flex-start;
 
     background:
-      rgba(255,255,255,0.92);
+      #000;
 
     backdrop-filter: blur(30px);
 
@@ -492,7 +492,7 @@ TABLET + MOBILE
 
   .nav a {
 
-    color: #111111;
+    color: #fff;
 
     font-size: 32px;
 
