@@ -1,10 +1,5 @@
-import React, { useState } from "react";
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /* COMMON */
 import Header from "./components/Header";
@@ -25,38 +20,192 @@ import Partners from "./components/Partners";
 import ContactPage from "./pages/ContactPage";
 
 /* =========================
-HOME PAGE
+   ✅ SEO HOOK
 ========================= */
+const useSEO = ({ title, description, canonical }) => {
+  useEffect(() => {
+    // Update title
+    if (title) document.title = title;
 
+    // Update meta description
+    const setMeta = (name, value) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value);
+    };
+
+    // Update canonical
+    const setCanonical = (href) => {
+      let el = document.querySelector("link[rel='canonical']");
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", "canonical");
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
+
+    if (description) setMeta("description", description);
+    if (canonical) setCanonical(canonical);
+  }, [title, description, canonical]);
+};
+
+/* =========================
+   ✅ HOME PAGE
+========================= */
 const HomePage = () => {
-  const [filters, setFilters] =
-    useState(null);
+  const [filters, setFilters] = useState(null);
+
+  // ✅ SEO for Home Page
+  useSEO({
+    title: "Hijra Realty Group — Buy & Sell Luxury Properties in Fujairah UAE",
+    description:
+      "Find premium residential & commercial properties in Fujairah, UAE. Hijra Realty Group offers verified listings, expert agents, and end-to-end legal support. Call +971 58 984 2522.",
+    canonical: "https://www.hijrarealtygroup.com/",
+  });
 
   return (
     <>
       <Header />
 
-      <HeroSection
-        onSearch={setFilters}
-      />
+      {/* ✅ H1 — Hidden visually but readable by Google */}
+      <h1
+        style={{
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          padding: "0",
+          margin: "-1px",
+          overflow: "hidden",
+          clip: "rect(0,0,0,0)",
+          border: "0",
+        }}
+      >
+        Luxury Properties for Sale in Fujairah UAE — Hijra Realty Group
+      </h1>
 
-      <PropertiesSection
-        filters={filters}
-      />
+      {/* ✅ Internal Navigation Links */}
+      <nav
+        aria-label="Quick links"
+        style={{
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+          clip: "rect(0,0,0,0)",
+        }}
+      >
+        <a href="/">Home</a>
+        <a href="/properties">Properties</a>
+        <a href="/communities">Communities</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+      </nav>
 
-      <WhyChooseUs />
+      {/* ✅ Page Sections wrapped in semantic HTML */}
+      <main id="main-content">
 
-      <CommunitiesSection />
+        <section aria-label="Hero">
+          <HeroSection onSearch={setFilters} />
+        </section>
 
-      <PremiumExperience />
+        <section aria-labelledby="properties-heading">
+          <h2
+            id="properties-heading"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+            }}
+          >
+            Featured Properties in Fujairah UAE
+          </h2>
+          <PropertiesSection filters={filters} />
+        </section>
 
-      <DreamHomeCTA />
+        <section aria-labelledby="why-heading">
+          <h2
+            id="why-heading"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+            }}
+          >
+            Why Choose Hijra Realty Group
+          </h2>
+          <WhyChooseUs />
+        </section>
 
-      <AboutUAE />
+        <section aria-labelledby="communities-heading">
+          <h2
+            id="communities-heading"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+            }}
+          >
+            Top Communities in Fujairah
+          </h2>
+          <CommunitiesSection />
+        </section>
 
-      <VideoHero />
+        <section aria-label="Premium Experience">
+          <PremiumExperience />
+        </section>
 
-      <Partners />
+        <section aria-label="Dream Home CTA">
+          <DreamHomeCTA />
+        </section>
+
+        <section aria-labelledby="uae-heading">
+          <h2
+            id="uae-heading"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+            }}
+          >
+            About Real Estate in UAE
+          </h2>
+          <AboutUAE />
+        </section>
+
+        <section aria-label="Video">
+          <VideoHero />
+        </section>
+
+        <section aria-labelledby="partners-heading">
+          <h2
+            id="partners-heading"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+              clip: "rect(0,0,0,0)",
+            }}
+          >
+            Our Trusted Partners
+          </h2>
+          <Partners />
+        </section>
+
+      </main>
 
       <Footer />
     </>
@@ -64,26 +213,33 @@ const HomePage = () => {
 };
 
 /* =========================
-APP
+   ✅ CONTACT PAGE
 ========================= */
+const ContactPageWrapper = () => {
 
+  // ✅ SEO for Contact Page
+  useSEO({
+    title: "Contact Hijra Realty Group — Fujairah UAE | +971 58 984 2522",
+    description:
+      "Contact Hijra Realty Group at Fujairah Creative City, Twin Towers. Call +971 58 984 2522 or email info@yourofficepartners.com for property inquiries.",
+    canonical: "https://www.hijrarealtygroup.com/contact",
+  });
+
+  return <ContactPage />;
+};
+
+/* =========================
+   ✅ APP
+========================= */
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-
         {/* HOME */}
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
+        <Route path="/" element={<HomePage />} />
 
         {/* CONTACT */}
-        <Route
-          path="/contact"
-          element={<ContactPage />}
-        />
-
+        <Route path="/contact" element={<ContactPageWrapper />} />
       </Routes>
     </BrowserRouter>
   );
