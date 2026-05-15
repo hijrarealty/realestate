@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block private pages
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.hijrarealtygroup.com/sitemap.xml
