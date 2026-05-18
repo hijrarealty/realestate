@@ -6,7 +6,7 @@ import React, {
 
 import "./AboutUAE.css";
 
-import aboutImage from "../assets/about-uae.jpg";
+import aboutImage from "../assets/about-uae.webp";
 
 const FEATURES = [
   {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./HeroSection.css";
 
-import heroBg from "../assets/hero-bg-4.jpg";
+import heroBg from "../assets/hero-bg-4.webp";
 
 const HeroSection = ({ onSearch }) => {
 

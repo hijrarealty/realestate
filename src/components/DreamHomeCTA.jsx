@@ -145,8 +145,8 @@ const DreamHomeCTA = () => {
             <p className="dcta-body">
 
               We match you with Dubai's finest
-              properties — from waterfront
-              apartments to exclusive villas —
+              properties from waterfront
+              apartments to exclusive villas
               with expert guidance every step
               of the way.
 

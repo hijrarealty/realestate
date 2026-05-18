@@ -2,9 +2,9 @@ import React from "react";
 
 import "./WhyChooseUs.css";
 
-import luxuryIcon from "../assets/luxury.png";
-import guidanceIcon from "../assets/guidance.png";
-import supportIcon from "../assets/support.png";
+import luxuryIcon from "../assets/luxury.webp";
+import guidanceIcon from "../assets/guidance.webp";
+import supportIcon from "../assets/support.webp";
 
 const features = [
   {

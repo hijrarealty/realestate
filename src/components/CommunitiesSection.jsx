@@ -6,13 +6,13 @@ import React, {
 
 import "./CommunitiesSection.css";
 
-import downtown from "../assets/downtown.jpg";
-import marina from "../assets/marina.jpg";
-import palm from "../assets/palm.jpg";
-import businessBay from "../assets/businessbay.jpg";
-import jbr from "../assets/jbr.jpg";
-import dubaiHills from "../assets/dubai.jpg";
-import city from "../assets/city.jpg";
+import downtown from "../assets/downtown.webp";
+import marina from "../assets/marina.webp";
+import palm from "../assets/palm.webp";
+import businessBay from "../assets/businessbay.webp";
+import jbr from "../assets/jbr.webp";
+import dubaiHills from "../assets/dubai.webp";
+import city from "../assets/city.webp";
 
 const communities = [
   {
