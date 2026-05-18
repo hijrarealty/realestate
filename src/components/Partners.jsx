@@ -8,11 +8,11 @@ import "./Partners.css";
 
 /* PARTNER LOGOS */
 
-import Partner1 from "../assets/partner1.png";
-import Partner2 from "../assets/partner2.png";
-import Partner3 from "../assets/partner3.png";
-import Partner4 from "../assets/partner4.png";
-import Partner5 from "../assets/partner5.png";
+import Partner1 from "../assets/partner1.webp";
+import Partner2 from "../assets/partner2.webp";
+import Partner3 from "../assets/partner3.webp";
+import Partner4 from "../assets/partner4.webp";
+import Partner5 from "../assets/partner5.webp";
 
 const Partners = () => {
 

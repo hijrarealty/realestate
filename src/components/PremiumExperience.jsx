@@ -6,7 +6,7 @@ import React, {
 
 import "./PremiumExperience.css";
 
-import premiumPoster from "../assets/premium-poster.jpg";
+import premiumPoster from "../assets/premium-poster.webp";
 import premiumVideo from "../assets/premium-video.mp4";
 
 const PremiumExperience = () => {
@@ -165,7 +165,7 @@ const PremiumExperience = () => {
               residences through immersive
               virtual tours. Discover architecture,
               interiors, and lifestyle details
-              from anywhere in the world —
+              from anywhere in the world 
               at your own pace.
 
             </p>
