@@ -12,7 +12,7 @@ import {
   FaRegClock
 } from "react-icons/fa";
 
-import footerLogo from "../assets/footer-logo.png";
+import footerLogo from "../assets/footer-logo.webp";
 
 export default function Footer() {
   const [email, setEmail] = useState("");

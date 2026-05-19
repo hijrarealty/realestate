@@ -43,7 +43,7 @@ const HeroSection = ({ onSearch }) => {
           src={heroBg}
           alt="Luxury real estate property in Dubai"
           className="hero-bg-image"
-          fetchPriority="high"
+          fetchpriority="high"
           loading="eager"
           decoding="async"
           width="1920"
