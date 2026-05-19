@@ -384,14 +384,23 @@ const PremiumExperience = () => {
 
             </button>
 
-            <video
-              ref={videoRef}
-              src={premiumVideo}
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-            />
+           <video
+  ref={videoRef}
+  controls
+  playsInline
+  preload="none"
+  poster={premiumPoster}
+  width="920"
+  height="517"
+  aria-label="Luxury property virtual tour video"
+>
+  <source
+    src={premiumVideo}
+    type="video/mp4"
+  />
+
+  Your browser does not support the video tag.
+</video>
 
           </div>
 

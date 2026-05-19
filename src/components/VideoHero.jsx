@@ -1,12 +1,44 @@
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 import "./VideoHero.css";
 
 /* VIDEO */
-
 import heroVideo from "../assets/hero-video-1.mp4";
 
+/* FALLBACK IMAGE */
+import heroPoster from "../assets/hero-bg-4.webp";
+
 const VideoHero = () => {
+
+  const [isMobile, setIsMobile] =
+    useState(false);
+
+  useEffect(() => {
+
+    const checkMobile = () => {
+
+      setIsMobile(
+        window.innerWidth < 768
+      );
+    };
+
+    checkMobile();
+
+    window.addEventListener(
+      "resize",
+      checkMobile
+    );
+
+    return () =>
+      window.removeEventListener(
+        "resize",
+        checkMobile
+      );
+
+  }, []);
 
   return (
 
@@ -15,24 +47,43 @@ const VideoHero = () => {
       aria-labelledby="video-hero-heading"
     >
 
-      {/* BACKGROUND VIDEO */}
+      {/* DESKTOP VIDEO */}
 
-      <video
-        className="video-bg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      >
+      {!isMobile ? (
 
-        <source
-          src={heroVideo}
-          type="video/mp4"
+        <video
+          className="video-bg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={heroPoster}
+          aria-hidden="true"
+        >
+
+          <source
+            src={heroVideo}
+            type="video/mp4"
+          />
+
+        </video>
+
+      ) : (
+
+        /* MOBILE IMAGE */
+
+        <img
+          src={heroPoster}
+          alt="Luxury Dubai residence"
+          className="video-bg"
+          loading="eager"
+          decoding="async"
+          width="1920"
+          height="1080"
         />
 
-      </video>
+      )}
 
       {/* OVERLAY */}
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
-import colorLogo from "../assets/logo-white.png";
+import colorLogo from "../assets/logo-white.webp";
 
 import {
   Link,
