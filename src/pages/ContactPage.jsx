@@ -72,13 +72,13 @@ const ContactPage = () => {
     {
       icon: MdPhone,
       title: "Phone Number",
-      details: ["+971 58 984 2522"],
+      details: ["+971 58 984 2522", "+971 4 425 7360"],
       color: "#8B5E3C"
     },
     {
       icon: MdLocationOn,
       title: "Office Locations",
-      details: ["Fujairah Creative City - Media Free Zone Fujairah - Twin Towers  P.O.Box 4422 Fujairah"],
+      details: ["Level 16, Empire Heights Tower B - Office #4-A09 - A Dubai Fountain St - Business Bay - Dubai - United Arab Emirates"],
       color: "#A8742A"
     },
     {
