@@ -50,7 +50,7 @@ export default function Footer() {
   const contactInfo = [
     { icon: FaMapMarkerAlt, text: "Level 16, Empire Heights Tower B - Office #4-A09 - A Dubai Fountain St - Business Bay - Dubai - United Arab Emirates", delay: "0.1s" },
     { icon: FaPhoneAlt, text: "+971 58 984 2522", delay: "0.2s" },
-    { icon: FaEnvelope, text: "info@yourofficepartners.com", delay: "0.3s" },
+    { icon: FaEnvelope, text: "info@hijrarealtygroup.com", delay: "0.3s" },
     { icon: FaRegClock, text: "Mon - Fri: 9:00 AM - 6:00 PM", delay: "0.4s" },
   ];
 
