@@ -1,11 +1,11 @@
 {
-  "name": "Hijra Realty Group UAE",
-  "short_name": "Hijra Realty",
+  "name": "HIJRA REALTY GROUP",
+  "short_name": "HIJRA REALTY",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a1628",
   "theme_color": "#0a1628",
-  "description": "Luxury real estate properties in Fujairah UAE.",
+  "description": "Luxury real estate properties in Dubai, UAE.",
   "icons": [
     {
       "src": "/favicon-192.png",
