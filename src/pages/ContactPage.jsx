@@ -66,7 +66,7 @@ const ContactPage = () => {
     {
       icon: MdEmail,
       title: "Email Address",
-      details: ["info@yourofficepartners.com"],
+      details: ["info@hijrarealtygroup.com"],
       color: "#C8A96B"
     },
     {
